@@ -1,0 +1,38 @@
+import java.util.*;
+
+
+public class Only_Single_element {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] Array = {1,2,3,11,4,5,6,7,1,2,3,4,5,6,7,2,11};
+		HashMap<Integer, Integer> tempStore = new HashMap<Integer,Integer>();
+		HashMap<Integer, Integer> unique = new HashMap<Integer,Integer>();
+		
+		if(Array.length == 0)
+			System.out.println("Array is Empty");
+		else{
+			for(int a: Array){
+				if(tempStore.containsKey(a)){
+					if(unique.containsKey(a))
+						unique.remove(a);
+				}
+				else{
+					tempStore.put(a, 1);
+					unique.put(a, 1);
+				}
+			}
+			if(unique.size() == 1){
+				Iterator it = unique.entrySet().iterator();
+				while(it.hasNext()){
+					Map.Entry loop = (Map.Entry)it.next();
+					System.out.println("the only unique Element is: "+loop.getKey());
+				}
+			}
+			else
+				System.out.println("No Unique Element");
+			
+		}
+	}
+
+}
