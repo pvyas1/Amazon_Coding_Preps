@@ -1,0 +1,45 @@
+import java.util.HashMap;
+import java.util.*;
+
+public class Find_Odd_Array {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] Array = {};
+		HashMap<Integer, Integer> Odd = new HashMap<Integer, Integer>();
+		HashMap<Integer, Integer> sum = new HashMap<Integer, Integer>();
+		
+		if(Array.length != 0){
+		for(int numbers: Array){
+			if(sum.containsKey(numbers)){
+				if(sum.get(numbers)%2 == 0){
+					Odd.put(numbers, sum.get(numbers)+1);
+				}
+				else{
+					if(Odd.containsKey(numbers))
+						Odd.remove(numbers);
+				}
+				sum.put(numbers, sum.get(numbers)+1);
+			}
+			else{
+				Odd.put(numbers, 1);
+				sum.put(numbers, 1);
+			}
+			
+		}
+		if(!(Odd.isEmpty())){
+		Iterator it = Odd.entrySet().iterator();
+		while(it.hasNext()){
+			Map.Entry pair = (Map.Entry)it.next();
+			System.out.println("Number: "+pair.getKey()+" , # of Times: "+pair.getValue());
+		}
+		}
+		else{
+			System.out.println("Nothing to display");
+		}
+		}
+		else{
+			System.out.println("Main Array is Empty");
+		}
+	}
+}
