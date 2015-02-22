@@ -1,0 +1,27 @@
+
+public class Sort_String_in_Place {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String str = "pello";
+		char temp;
+		char[] oStr;
+		if(str.length() == 0)
+			System.out.println("Please provide a string. The string is empty");
+		else{
+			oStr = str.toCharArray();
+			for(int i = 0; i < (str.length() - 1); i++){
+				for(int j = i+1; j > 0; j--){
+					if(oStr[j] < oStr[j-1]){
+						temp = oStr[j-1];
+						oStr[j-1] = oStr[j];
+						oStr[j] = temp;
+					}
+				}
+			}
+			str = String.valueOf(oStr);
+			System.out.println("The Sorted String is: "+str);
+		}
+	}
+
+}
