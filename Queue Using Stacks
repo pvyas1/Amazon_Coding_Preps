@@ -1,0 +1,104 @@
+import java.util.*;
+
+public class Queue_Using_Stacks {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
+
+class MyQueue<T>{
+	Stack<T> s1,s2;
+	
+	public MyQueue(){
+		s1 = new Stack<T>();
+		s2 = new Stack<T>();
+	}
+	
+	
+	public int size(){
+		return s1.size()+s2.size();
+	}
+	
+	
+	public void add(T value){
+		s1.push(value);
+	}
+	
+	
+	private void shiftStacks(){
+		if(s2.isEmpty()){
+			while(!s1.isEmpty())
+				s2.push(s1.pop());
+		}
+	}
+	
+	
+	public T peek(){
+		shiftStacks();
+		return s2.peek();
+	}
+	
+	
+	public T remove(){
+		shiftStacks();
+		return s2.pop();
+	}
+	
+}
+
+
+
+/*public class Main {
+	 
+	private static class QueueWithStack<T> {
+ 
+		private Stack<T> stack;
+		int size =0;
+		public QueueWithStack(){
+			stack = new Stack<T>();
+		}
+ 
+		public T enqueue(T element){
+				stack.push(element);
+				size++;
+				return element;
+		}
+ 
+		public T dequeue(){
+			if(size>0)size--;
+			return getReverseTop();
+ 
+		}
+ 
+		public T getReverseTop(){
+			if(stack.size()==0) return null;
+			T res = stack.pop();
+			T e = getReverseTop();
+			if(e==null) return res;
+			else{
+				stack.push(res);
+				return e;
+			}
+		}
+	}
+	public static void main(String[] args){
+		Main.QueueWithStack<Integer> ds = new Main.QueueWithStack<Integer>();
+		ds.enqueue(2);
+		ds.enqueue(3);
+		ds.enqueue(4);
+		ds.enqueue(5);
+		System.out.print(ds.dequeue() + " ");
+		System.out.print(ds.dequeue() + " ");
+		ds.enqueue(6);
+		ds.enqueue(7);
+		ds.enqueue(8);
+		System.out.print(ds.dequeue() + " ");
+		System.out.print(ds.dequeue() + " ");
+		System.out.print(ds.dequeue() + " ");
+		System.out.print(ds.dequeue() + " ");
+		System.out.print(ds.dequeue() + " ");
+	}
+}*/
