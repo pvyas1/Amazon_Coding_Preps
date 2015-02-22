@@ -1,0 +1,47 @@
+import java.util.*;
+
+
+public class Anagram_or_Not {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String s1 = "the eyes";
+		String s2 = "they see";
+		char[] str1 = s1.toCharArray();
+		char[] str2 = s2.toCharArray();
+		HashMap<Character,Integer> check = new HashMap<Character,Integer>();
+		Boolean flag = true;
+		
+		if(str1.length == 0 || str2.length == 0)
+			System.out.println("Atleast one of the String is empty.");
+		else{
+			for(char a: str1){
+				if(a != ' '){
+					if(check.containsKey(a))
+						check.put(a, check.get(a)+1);
+					else
+						check.put(a, 1);
+				}
+			}
+			for(char a: str2){
+				if(a != ' '){
+					if(check.containsKey(a)){
+						if(check.get(a) == 1)
+							check.remove(a);
+						else
+							check.put(a, check.get(a)-1);
+					}
+					else{
+						flag = false;
+						break;
+					}
+				}
+			}
+			if(check.isEmpty() && flag == true)
+				System.out.println("It is an anagram");
+			else
+				System.out.println("Not an Anagram");
+		}
+	}
+
+}
