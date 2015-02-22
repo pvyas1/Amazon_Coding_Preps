@@ -1,0 +1,36 @@
+import java.util.*;
+
+public class Intersection_of_Array {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] a1 = {3,1,2,3,4,2,3};
+		int[] a2 = {2,3,6,2,5,2,2,3};
+		HashMap<Integer,Integer> check = new HashMap<Integer, Integer>();
+		
+		
+		if(a1.length == 0 || a2.length == 0)
+			System.out.println("Retry with a valid array");
+		else{
+			for(int num: a1){
+				if(check.containsKey(num))
+					check.put(num, check.get(num)+1);
+				else
+					check.put(num, 1);
+			}
+			System.out.println("the Intersection of the array is:");
+			System.out.print("{ ");
+			for(int num: a2){
+				if(check.containsKey(num)){
+					System.out.print(num+" ");
+					if(check.get(num) > 1)
+						check.put(num, check.get(num)-1);
+					else
+						check.remove(num);
+				}
+			}
+			System.out.print("}");
+		}
+	}
+
+}
