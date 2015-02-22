@@ -1,0 +1,28 @@
+import java.util.HashMap;
+
+public class Remove_Duplicates_Array {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] Array = {1,1,2,2,3,3,4,4,5,5,6,6,8};
+		int[] Fin_Arr = new int[Array.length];
+		
+		HashMap<Integer, Boolean> checkDup = new HashMap<Integer, Boolean>();
+		
+		if(Array.length == 0)
+			System.out.println("Please provide a valid Array");
+		else{
+			int i = 0;
+			for(int num: Array){
+				if(!(checkDup.containsKey(num))){
+					Fin_Arr[i] = num;
+					checkDup.put(num, true);
+					i++;
+				}
+			}
+			
+			for(int j = 0; j < i; j++)
+				System.out.print(" "+Fin_Arr[j]);
+		}
+	}
+}
