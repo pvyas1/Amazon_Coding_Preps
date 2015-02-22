@@ -1,0 +1,31 @@
+
+public class My_Own_Pow {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		/*
+		 *	Complexity is O(nLogn) 
+		*/
+		
+		double base = 2;
+		int pow = -1;
+		
+		System.out.println("The power is: "+myPower(base,pow));
+	}
+	static double myPower(double base, int pow){
+		if(pow == 0)
+			return 1;
+		if(pow<0){
+			base = 1.0/base;
+			pow = -pow;
+		}
+		double result = myPower(base,pow/2);
+		result = result * result;
+		if(pow%2 != 0)
+			result = result * base;
+		return result;
+	}
+
+}
