@@ -1,0 +1,25 @@
+
+public class LCS_in_String_Array {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		char[] str1 = {'A','G','G','T','A','B'};
+		char[] str2 = {'G','X','T','X','A','Y','B'};
+		
+		System.out.println("the length of the maximum LCS is: "+lcs(str1,str2, str1.length,str2.length));
+	}
+	static int lcs(char[] str1, char[] str2, int len1, int len2){
+		if(len1 == 0 || len2 == 0)
+			return 0;
+		else if(str1[len1-1] == str2[len2-1]){
+			return 1+ lcs(str1,str2,len1-1,len2-1);
+		}
+		else{
+			return max(lcs(str1,str2,len1,len2-1),lcs(str1,str2,len1-1,len2));
+		}
+	}
+	static int max(int num1, int num2){
+		return (num1 > num2)? num1 : num2;
+	}
+
+}
